@@ -1,20 +1,29 @@
 {
-    "name": "nodejs",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js",
-        "deployCommandsLocal": "node deploy-commandsLocal.js",
-        "deployCommandsLocal": "node deploy-commandsGlobal.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "deployCommandsLocal": "node deploy-commandsLocal.js",
+    "deployCommandsGlobal": "node deploy-commandsGlobal.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
     "@types/node": "^18.0.6",
     "discord.js": "^14.7.1",
     "node-fetch": "^3.2.6"
-    }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonjchung/Melee-Manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brandonjchung/Melee-Manager/issues"
+  },
+  "homepage": "https://github.com/brandonjchung/Melee-Manager#readme",
+  "description": ""
 }
