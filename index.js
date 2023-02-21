@@ -10,6 +10,8 @@ const client = new Client({
     ]
 });
 
+// FIX: REFACTOR NODE player1 and player2 fields into 1 player list as well as the incomer field
+
 client.commands = new Collection();
 client.players = new Collection();
 client.playersToNodeMap = new Collection();
@@ -24,7 +26,7 @@ for(const file of commandFiles){
         client.commands.set(command.data.name, command);
     }
     else{
-        console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        console.log(`[WARNING] The command at ./commands/${file} is missing a required "data" or "execute" property.`);
     }
 }
 

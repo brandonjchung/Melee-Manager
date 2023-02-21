@@ -1,36 +1,37 @@
-const { Node } = require('./Node.js');
+const Node = require('./Node.js');
 
-module.exports = () => {
+module.exports = function LinkedList() {
     this.head = null;
     this.tail = null;
-    
-    this.add = (user, map) => {
+
+    this.add = function add(user, map) {
         // if new list instantiate head and tail
-        if(head == null){
+        if (this.head == null) {
             let working = new Node(user);
-            head = working;
-            tail = working;
+            this.head = working;
+            this.tail = working;
+            this.tail.next = this.head;
+            this.tail.prev = this.head;
             map.set(user.id, working);
         }
         // fill in missing player slot
-        else if(tail.player1 == null && tail.player2 != null){
-            tail.player1 = user;
-            map.set(user.id, tail);
-            tail.next.incoming = null;
+        else if (this.tail.player1 == null && this.tail.player2 != null) {
+            this.tail.player1 = user;
+            map.set(user.id, this.tail);
         }
-        else if(tail.player2 == null && tail.player1 != null){
-            tail.player2 = user;
-            map.set(user.id, tail);
-            tail.next.incoming = null;
+        else if (this.tail.player2 == null && this.tail.player1 != null) {
+            this.tail.player2 = user;
+            map.set(user.id, this.tail);
         }
         // no open slot create new match node
-        else{
+        else {
             let working = new Node(user);
-            tail.next = working;
-            tail = working;
-            tail.next = head;
+            this.tail.next = working;
+            working.prev = this.tail;
+            this.tail = working;
+            this.tail.next = this.head;
+            this.head.prev = this.tail;
             map.set(user.id, working);
-            tail.next.incoming = user;
         }
     }
 }

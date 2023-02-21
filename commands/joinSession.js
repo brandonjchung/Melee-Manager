@@ -12,15 +12,15 @@ module.exports = {
             
             // check if matches are already ongoing if so add player to rotation as well
             if(interaction.client.matchups != null){
-                interaction.client.matchups.add(user, interatcion.client.playersToNodeMap);
+                interaction.client.matchups.add(user, interaction.client.playersToNodeMap);
                 appendString = interaction.client.playersToNodeMap(user.id).getMatch();
             }
             
             interaction.client.players.set(interaction.user.id, interaction.user);
-            await interaction.reply(`A new challenger ${interaction.user.username}, approaches. ${appendString}`);
+            await interaction.reply(`A new challenger ${interaction.user}, approaches. ${appendString}`);
         }
         else{
-            await interaction.reply(`${interaction.user.username}, you are already in the session`);
+            await interaction.reply(`${interaction.user}, you are already in the session`);
         }
 	},
 };
