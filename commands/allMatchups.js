@@ -9,7 +9,7 @@ module.exports = {
         let matchString = 'Match Ups: \n';
         
         // create matchups should load all the players into the matchups linked list
-        if(interaction.client.players != null){
+        if(interaction.client.players != null && interaction.client.players.size > 1){
             
             let workingNode = interaction.client.matchups.head;
             

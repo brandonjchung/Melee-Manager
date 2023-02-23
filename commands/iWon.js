@@ -7,11 +7,15 @@ module.exports = {
 	async execute(interaction) {
         
         let working = interaction.client.playersToNodeMap.get(interaction.user.id);
+        console.log(working);
 
         if(working){
             // break case user isnt in match
             if(working.incoming === interaction.user){
-                return await interaction.reply(`You're still waiting for ${working.player1} and ${working.player2} match to finish'`);
+                return await interaction.reply(`You're still waiting for ${working.player1} and ${working.player2} match to finish`);
+            }
+            else if(working.player1 == null || working.player2 == null){
+                return await interaction.reply(`You're still waiting for ${working.prev.player1} and ${working.prev.player2} match to finish`);
             }
             
             let matchString = working.getWinner(interaction.user);
@@ -29,7 +33,7 @@ module.exports = {
                     else if(working.next.player2 == null){
                         working.next.player2 = working.player2;
                     }
-                    else{
+                    else if(working.next.incoming != null){
                         matchString+= 'Seems like there\'s been a bit of a pile up, play an extra game until those ahead of you finish up';
                     }
                     interaction.client.playersToNodeMap.set(working.player2.id, working.next);
@@ -56,7 +60,7 @@ module.exports = {
                     else if(working.next.player2 == null){
                         working.next.player2 = working.player1;
                     }
-                    else{
+                    else if(working.next.incoming != null){
                         matchString+= 'Seems like there\'s been a bit of a pile up, play an extra game until those ahead of you finish up';
                     }
                     interaction.client.playersToNodeMap.set(working.player1.id, working.next);
@@ -102,7 +106,7 @@ module.exports = {
                     else if(working.next.player2 == null){
                         working.next.player2 = working.player1;
                     }
-                    else{
+                    else if(working.next.incoming != null){
                         matchString+= 'Seems like there\'s been a bit of a pile up, play an extra game until those ahead of you finish up';
                     }
                     interaction.client.playersToNodeMap.set(working.player1.id, working.next);
@@ -129,7 +133,7 @@ module.exports = {
                     else if(working.next.player2 == null){
                         working.next.player2 = working.player2;
                     }
-                    else{
+                    else if(working.next.incoming != null){
                         matchString+= 'Seems like there\'s been a bit of a pile up, play an extra game until those ahead of you finish up';
                     }
                     interaction.client.playersToNodeMap.set(working.player2.id, working.next);

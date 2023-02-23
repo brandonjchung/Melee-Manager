@@ -9,7 +9,7 @@ module.exports = {
         let matchString = 'Match Ups: \n';
         
         // create matchups should load all the players into the matchups linked list
-        if(interaction.client.players.size > 1){
+        if(interaction.client.players != null && interaction.client.players.size > 1){
             interaction.client.matchups = new LinkedList();
             
 
@@ -27,7 +27,7 @@ module.exports = {
             await interaction.reply(matchString);
         }
         else{
-            await interaction.reply('There are currently no players in the session enter /joinsession to join the session.')
+            await interaction.reply('There are not enough players in the session enter /joinsession to join the session.')
         }
     }
 }
