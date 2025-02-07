@@ -3,7 +3,7 @@ const { LinkedList } = require('../objects/LinkedList.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('displaymatchups')
+        .setName('printmatchups')
         .setDescription('Displays current matchups'),
     async execute(interaction) {
         let matchString = 'Match Ups: \n';
@@ -14,9 +14,10 @@ module.exports = {
             let workingNode = interaction.client.matchups.head;
             
             do {
+                console.log(workingNode);
                 matchString += workingNode.getMatch();
                 workingNode = workingNode.next;
-            } while(workingNode != head)
+            } while(workingNode != interaction.client.matchups.head)
     
             await interaction.reply(matchString);
         }

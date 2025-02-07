@@ -7,7 +7,6 @@ module.exports = {
 	async execute(interaction) {
         
         let working = interaction.client.playersToNodeMap.get(interaction.user.id);
-        console.log(working);
 
         if(working){
             // break case user isnt in match
